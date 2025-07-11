@@ -1,13 +1,13 @@
-# ⚡Wide and Deep Learning for Infrared Small Target Detection⚡
+# ⚡A Wide & Shallow Network Tailored for Infrared Small Target Detection⚡
 
 ## Abstract
-Recent advancements in infrared small target detection (IRSTD) have predominantly relied on increasing computational resources and memory, posing significant challenges for real-world, large-scale deployment. To overcome these challenges, we propose WDNet, a lightweight IRSTD model that strikes an optimal balance between network's width and depth, effectively enhancing detection performance while minimizing computational cost and resource consumption. Unlike traditional model structure design strategies, WDNet introduces a Width Extension Module (WEM), which enhances the model's feature representation capability by expanding the network’s width in a structured manner, rather than simply increasing the network's depth. Additionally, we customize a Channel-Spatial Hybrid Attention (CSHA) module that enables the model to filter out noisy, irrelevant information while focusing on important features. To the best of our knowledge, WDNet is the most lightweight model in the field of IRSTD, with only 0.054M parameters—over a hundred times smaller than the SOTA models—and just 1.050G FLOPs. Extensive experiments conducted on multiple datasets demonstrate that our approach not only matches but often exceeds the performance of the SOTA models. Moreover, WDNet's inference speed is several times faster than the previous best model, making it a real-time detector suitable for embedded applications. This efficiency, combined with high detection performance, makes WDNet a compelling solution for practical, large-scale IRSTD deployment in real-world scenarios.
+Designing a lightweight yet competitive model is always a challenging problem across the entire computer vision community—Infrared Small Target Detection (IRSTD) is no exception. Our proposed model, WSNet, is specifically designed to address this challenge. Rather than relying on deeper architectures or elaborate fusion mechanisms, WSNet achieves competitive performance while dramatically reducing both computational overhead and memory consumption. The core innovation of WSNet lies in its highly efficient network architecture and the Width Extension Module (WEM), which systematically expands the network’s width to enhance feature representation—providing a more effective and lightweight alternative to simply increasing network depth. Furthermore, we introduce a Channel-Spatial Hybrid Attention (CSHA) module, which effectively suppresses irrelevant noise and highlights salient features crucial for small target detection. To the best of our knowledge, WSNet is the most lightweight model currently available in the IRSTD domain, with only 0.054M parameters—hundreds of times fewer than state-of-the-art models—and a computational cost of just 1.050G FLOPs. Extensive experiments across multiple benchmark datasets demonstrate that WSNet not only matches the performance of leading methods but also achieves significantly faster inference speed, making it a viable real-time solution for embedded and resource-constrained applications.
 
 ## Contributions
-* We introduce WDNet, an extremely lightweight IRSTD model, with only 0.054M parameters and 1.050G FLOPs. WDNet is significantly smaller than existing SOTA models, offering a dramatic reduction in computational cost.
-* We propose a Width Extension Module (WEM) to expand the model’s width, enhancing feature representation capabilities through different receptive field size.
-* We present a Channel-Spatial Hybrid Attention (CSHA) module that enables the model to focus on useful details and filter out irrelevant noise, improving detection performance.
-* Extensive experiments on multiple datasets, such as SIRST, NUDT-SIRST, and IRSTD-1K, demonstrate that WDNet not only matches but often surpasses the performance of existing SOTA models. Furthermore, WDNet’s inference time is among the fastest, making it suitable for real-time detection and large-scale deployment in real-world IRSTD applications.
+* Our WSNet demonstrates that detecting infrared small targets does not require a very deep network architecture. With only 0.054M parameters and 1.050G FLOPs, WSNet stands out as the most lightweight model in the field of IRSTD.
+* We propose a Width Extension Module (WEM) to enhance feature representation capabilities by expanding the model’s width.
+* We present a Channel-Spatial Hybrid Attention (CSHA) module that enables the model to focus on useful details and filter out irrelevant noise, improving detection performance. 
+* Extensive experiments on multiple benchmark datasets, including SIRST, NUDT-SIRST, and IRSTD-1K, demonstrate that WSNet achieves performance comparable to existing SOTA models, while offering significantly faster inference speed. Moreover, WSNet can be deployed directly on resource-constrained devices such as CPUs, where it still supports real-time detection—making it highly suitable for real-time applications and large-scale deployment in practical IRSTD scenarios.
 
 ## Datasets
 We used the SIRST, NUDT-SIRST, IRSTD-1K for both training and test. 
@@ -51,28 +51,28 @@ The original links of these datasets:
 ## Commands
 ### Commands for converting to operation pathing
   ```
-  $ cd /root/WDNet
+  $ cd /root/WSNet
   ```
   where '/root/' denotes your current path.
 ### Commands for training
 * **Run **`train.py`** to perform network training in single GPU and multiple GPUs. Example for training [model_name] on [dataset_name] datasets:**
   ```
-    $ python train.py --model_names WDNet --dataset_names SIRST
+    $ python train.py --model_names WSNet --dataset_names SIRST
   ```
 ### Commands for test
 * **Run **`test.py`** to perform network inference and evaluation. Example for test [model_name] on [dataset_name] datasets:**
   ```
-  $ python test.py --model_names WDNet --dataset_names SIRST
+  $ python test.py --model_names WSNet --dataset_names SIRST
   ```
 ### Commands for inference only with images
 * **Run **`inference.py`** to inference only with images. Examples:**
   ```
-  $ python inference.py --model_names WDNet --dataset_names SIRST
+  $ python inference.py --model_names WSNet --dataset_names SIRST
   ```
 ### Commands for parameters/FLOPs calculation
 * **Run **`cal_params.py`** for parameters and FLOPs calculation. Examples:**
   ```
-  $ python cal_params.py --model_names WDNet
+  $ python cal_params.py --model_names WSNet
   ```
 
 ## Acknowledgement
