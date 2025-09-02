@@ -13,7 +13,7 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
-parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD train")
+parser = argparse.ArgumentParser(description="WSNet train")
 parser.add_argument("--model_names", default=['WSNet'], nargs='+',
                     help="model_name: 'WSNet' ")
 parser.add_argument("--dataset_names", default=['SIRST'], nargs='+',
@@ -247,4 +247,5 @@ if __name__ == '__main__':
             train()
             print('\n')
             opt.f.close()
+
 
