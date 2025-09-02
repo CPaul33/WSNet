@@ -17,7 +17,7 @@ if __name__ == '__main__':
     opt.f = open('./params_' + (time.ctime()).replace(' ', '_') + '.txt', 'w')
     input_img = torch.rand(1,1,256,256).cuda()
     for model_name in opt.model_names:
-        net = Net(model_name, mode='test').cuda()    
+        net = Net(model_name, dataset_name=None, mode='test').cuda()    
         flops, params = profile(net, inputs=(input_img, ))
         print(model_name)
         print('Params: %2fM' % (params/1e6))
@@ -28,4 +28,5 @@ if __name__ == '__main__':
         opt.f.write('\n')
     opt.f.close()
         
+
 
