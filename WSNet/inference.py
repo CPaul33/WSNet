@@ -10,7 +10,7 @@ import time
 from tqdm import tqdm
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
-parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD Inference without mask")
+parser = argparse.ArgumentParser(description="WSNet Inference without mask")
 parser.add_argument("--model_names", default=['WSNet','ACM', 'ALCNet','DNANet', 'ISNet', 'RDIAN', 'ISTDU-Net'], nargs='+',
                     help="model_name: 'WSNet','ACM', 'ALCNet', 'DNANet', 'ISNet', 'UIUNet', 'RDIAN', 'ISTDU-Net', 'U-Net', 'RISTDnet'")
 parser.add_argument("--pth_dirs", default=None, nargs='+',  help="checkpoint dir, default=None or ['NUDT-SIRST/ACM_400.pth.tar','NUAA-SIRST/ACM_400.pth.tar']")
@@ -103,4 +103,5 @@ if __name__ == '__main__':
                         opt.pth_dir = opt.save_log + pth_dir
                         test()
                         print('\n')
+
 
