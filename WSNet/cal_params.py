@@ -6,7 +6,7 @@ from thop import profile
 import torch
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
-parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD Parameter and FLOPs")
+parser = argparse.ArgumentParser(description="WSNet Parameter and FLOPs")
 parser.add_argument("--model_names", default=['ACM', 'ALCNet', 'DNANet', 'ISNet', 'RISTDnet', 'UIUNet', 'U-Net', 'RDIAN', 'ISTDU-Net'], nargs='+', 
                     help="model_name: 'ACM', 'ALCNet', 'DNANet', 'ISNet', 'RISTDnet', 'UIUNet', 'U-Net', 'RDIAN', 'ISTDU-Net'")
 
@@ -28,3 +28,4 @@ if __name__ == '__main__':
         opt.f.write('\n')
     opt.f.close()
         
+
