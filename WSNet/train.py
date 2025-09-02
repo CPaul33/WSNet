@@ -58,7 +58,7 @@ def train():
                                img_norm_cfg=opt.img_norm_cfg)
     train_loader = DataLoader(dataset=train_set, num_workers=opt.threads, batch_size=opt.batchSize, shuffle=True)
 
-    net = Net(model_name=opt.model_name, mode='train').cuda()
+    net = Net(model_name=opt.model_name, dataset_name=opt.dataset_name ,mode='train').cuda()
     net.train()
     if opt.weights_init == 'weights_init_xavier':
         net.apply(weights_init_xavier)
@@ -247,5 +247,6 @@ if __name__ == '__main__':
             train()
             print('\n')
             opt.f.close()
+
 
 
