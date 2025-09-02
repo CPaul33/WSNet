@@ -31,7 +31,7 @@ def conv_batch(in_num, out_num, kernel_size=3, padding=1, stride=1):
 
 
 class WEM(nn.Module):
-    def __init__(self, in_channels, stride, kernel_size, padding):
+    def __init__(self, in_channels):
         super(WEM, self).__init__()
         inter_channels = int(in_channels / 4)
         out_channels = in_channels
@@ -100,7 +100,7 @@ class WSNet(nn.Module):
         super(WSNet, self).__init__()
         self.conv1 = conv_batch(1, 16)
         self.conv2 = conv_batch(16, 32, stride=2)
-        self.wem = WEM(in_channels=32, stride=1, kernel_size=1, padding=0)
+        self.wem = WEM(in_channels=32)
         self.csha = CSHA(32, 32)
         self.conv_ = conv_batch(32, 32, 3, padding=1)
         self.conv_res = conv_batch(16, 32, 1, padding=0)
@@ -124,5 +124,43 @@ class WSNet(nn.Module):
         # x_new = temp + temp2
         out = self.leakyrelu(temp + temp2) #x_f
         pred = self.head(out) #x_fcn
+
+        return pred.sigmoid()
+
+
+class WSNet_NUDT(nn.Module):
+    def __init__(self):
+        super(WSNet_NUDT, self).__init__()
+        self.conv = conv_batch(1, 32)
+        self.conv1 = conv_batch(32, 64)
+        self.conv2 = conv_batch(64, 128, stride=2)
+        self.conv3 = conv_batch(128, 64)
+        self.wem = WEM(in_channels=128)
+        self.csha = CSHA(128, 32)
+        self.conv_ = conv_batch(128, 128, 3, padding=1)
+        self.conv_res1 = conv_batch(32, 128, 1, padding=0)
+        self.conv_res2 = conv_batch(64, 128, 1, padding=0)
+        self.relu = nn.ReLU()
+        self.head = _FCNHead(64, 1)
+
+    def forward(self, x):
+        _, _, h, w = x.shape
+        x = self.conv(x)
+        out1 = self.conv1(x)  # x'
+        out2 = self.conv2(out1)  # x_l
+
+        out2 = self.wem(out2)  # x_w
+
+        out2 = self.conv_(out2)  # x_w
+        out2 = self.csha(out2)  # x_g
+
+        temp = F.interpolate(out2, size=[h, w], mode='bilinear')  # x_h
+        temp2 = self.conv_res2(out1)  # x_r
+
+        # x_new = temp + temp2
+        out = self.relu(temp + temp2)  # x_f
+        x = self.conv_res1(x)
+        out = self.conv3(self.relu(out + x))
+        pred = self.head(out)  # x_fcn
 
         return pred.sigmoid()
