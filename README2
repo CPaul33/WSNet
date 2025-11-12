@@ -1,0 +1,21 @@
+# ClickIRST: Towards Interactive Segmentation for Infrared Small Target
+
+
+## Datasets
+We used the WideIRSTD for both training and testing, SIRST3 only for testing.
+
+### Commands for runing demo
+```
+python demo.py --checkpoint=experiments/ckick10/checkpoints/last_checkpoint.pth --gpu 0
+```
+  
+### Commands for training
+```
+python train.py models/iter_mask/plainvit_huge448_cocolvis_itermask.py \
+--batch-size=16 \
+--gpus=0,1
+```
+### Commands for test
+  ```
+  python scripts/evaluate_model.py NoBRS --gpu=0 --checkpoint=experiments/ckick10/checkpoints/last_checkpoint.pth --eval-mode=cvpr --datasets=SIRST3
+  ```
