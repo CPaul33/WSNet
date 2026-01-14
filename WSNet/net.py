@@ -18,7 +18,7 @@ class Net(nn.Module):
         if model_name == 'WSNet' and (dataset_name != 'NUDT-SIRST'):
             self.model = WSNet()
         else:
-            self.model = WSNet_NUDT()
+            self.model = WSNet_Large()
 
     def forward(self, img):
         return self.model(img)
@@ -26,4 +26,5 @@ class Net(nn.Module):
     def loss(self, pred, gt_mask):
         loss = self.cal_loss(pred, gt_mask)
         return loss
+
 
