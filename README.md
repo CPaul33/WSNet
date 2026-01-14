@@ -1,13 +1,26 @@
 # ⚡A Wide & Shallow Network Tailored for Infrared Small Target Detection⚡
 
-## Abstract
-Designing a lightweight yet competitive model is always a challenging problem across the entire computer vision community—Infrared Small Target Detection (IRSTD) is no exception. Our proposed model, WSNet, is specifically designed to address this challenge. Rather than relying on deeper architectures or elaborate fusion mechanisms, WSNet achieves competitive performance while dramatically reducing both computational overhead and memory consumption. The core innovation of WSNet lies in its highly efficient network architecture and the Width Extension Module (WEM), which systematically expands the network’s width to enhance feature representation—providing a more effective and lightweight alternative to simply increasing network depth. Furthermore, we introduce a Channel-Spatial Hybrid Attention (CSHA) module, which effectively suppresses irrelevant noise and highlights salient features crucial for small target detection. To the best of our knowledge, WSNet is the most lightweight model currently available in the IRSTD domain, with only 0.054M parameters—hundreds of times fewer than state-of-the-art models—and a computational cost of just 1.050G FLOPs. Extensive experiments across multiple benchmark datasets demonstrate that WSNet not only matches the performance of leading methods but also achieves significantly faster inference speed, making it a viable real-time solution for embedded and resource-constrained applications.
+## Highlights
+**What are the main findings?**
+* Extremely Lightweight Model: WSNet achieves state-of-the-art efficiency with only
+0.054 M parameters and 1.050 G FLOPs, making it the lightest model to date in the field
+of Infrared Small Target Detection (IRSTD).
+* Wide and Shallow Architecture: Contrary to conventional deep networks, WSNet adopts
+a wide and shallow design, which is more suitable for infrared images that lack rich
+semantic information. Excessive depth leads to performance degradation in IRSTD.
+* Superior Performance-Speed Trade-off: WSNet achieves competitive detection accuracy
+(e.g., highest IoU on SIRST, and best Pd on NUDT-SIRST) while offering the fastest
+inference speed (up to 146 FPS on GPU, 30 FPS on CPU).
 
-## Contributions
-* Our WSNet demonstrates that detecting infrared small targets does not require a very deep network architecture. With only 0.054M parameters and 1.050G FLOPs, WSNet stands out as the most lightweight model in the field of IRSTD.
-* We propose a Width Extension Module (WEM) to enhance feature representation capabilities by expanding the model’s width.
-* We present a Channel-Spatial Hybrid Attention (CSHA) module that enables the model to focus on useful details and filter out irrelevant noise, improving detection performance. 
-* Extensive experiments on multiple benchmark datasets, including SIRST, NUDT-SIRST, and IRSTD-1K, demonstrate that WSNet achieves performance comparable to existing SOTA models, while offering significantly faster inference speed. Moreover, WSNet can be deployed directly on resource-constrained devices such as CPUs, where it still supports real-time detection—making it highly suitable for real-time applications and large-scale deployment in practical IRSTD scenarios.
+**What is the implication of the main finding?**
+* Practical Deployment in Resource-Limited Environments: WSNet’s lightweight design
+and real-time CPU compatibility enable its deployment in embedded systems, drones,
+and portable infrared devices, where computational resources are limited but low-
+latency detection is critical.
+* Paradigm Shift in IRSTD Architecture Design: The success of a wide and shallow
+network challenges the prevailing “deeper is better” assumption in deep learning
+for IRSTD, encouraging the community to reconsider architecture tailoring based on
+domain-specific characteristics.
 
 ## Datasets
 We used the SIRST, NUDT-SIRST, IRSTD-1K for both training and test. 
