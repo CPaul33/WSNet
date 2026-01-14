@@ -128,9 +128,9 @@ class WSNet(nn.Module):
         return pred.sigmoid()
 
 
-class WSNet_NUDT(nn.Module):
+class WSNet_Large(nn.Module):
     def __init__(self):
-        super(WSNet_NUDT, self).__init__()
+        super(WSNet_Large, self).__init__()
         self.conv = conv_batch(1, 32)
         self.conv1 = conv_batch(32, 64)
         self.conv2 = conv_batch(64, 128, stride=2)
