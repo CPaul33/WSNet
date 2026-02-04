@@ -61,6 +61,19 @@ The original links of these datasets:
 * NUDT-SIRST &nbsp; [[download]](https://github.com/YeRen123455/Infrared-Small-Target-Detection) &nbsp; [[paper]](https://ieeexplore.ieee.org/abstract/document/9864119)
 * IRSTD-1K &nbsp; [[download dir]](https://github.com/RuiZhang97/ISNet) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/9880295)
 
+## Requirements
+- **Python 3**
+- **numpy==1.26.4**
+- **torch==2.8.0+cu128**
+- **torchvision==0.23.0+cu128**
+- **matplotlib==3.10.8**
+- **tqdm==4.66.2**
+- **pillow==12.1.0**
+- **tqdm==4.66.2**
+- **scipy==1.11.4**
+- **thop**
+<br><br>
+
 ## Commands
 ### Commands for converting to operation pathing
   ```
