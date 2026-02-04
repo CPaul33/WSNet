@@ -165,7 +165,7 @@ def val(save_pth):
     val_set = ValSetLoader(opt.dataset_dir, opt.dataset_name, opt.dataset_name, img_norm_cfg=opt.img_norm_cfg)
     val_loader = DataLoader(dataset=val_set, num_workers=1, batch_size=1, shuffle=False)
 
-    net = Net(model_name=opt.model_name, mode='test').cuda()
+    net = Net(model_name=opt.model_name, dataset_name=opt.dataset_name, mode='test').cuda()
     ckpt = torch.load(save_pth)
     net.load_state_dict(ckpt['state_dict'])
     tbar = tqdm(val_loader)
@@ -198,7 +198,7 @@ def test(save_pth):
     test_set = TestSetLoader(opt.dataset_dir, opt.dataset_name, opt.dataset_name, img_norm_cfg=opt.img_norm_cfg)
     test_loader = DataLoader(dataset=test_set, num_workers=1, batch_size=1, shuffle=False)
 
-    net = Net(model_name=opt.model_name, mode='test').cuda()
+    net = Net(model_name=opt.model_name, dataset_name=opt.dataset_name, mode='test').cuda()
     ckpt = torch.load(save_pth)
     net.load_state_dict(ckpt['state_dict'])
     tbar = tqdm(test_loader)
@@ -247,6 +247,4 @@ if __name__ == '__main__':
             train()
             print('\n')
             opt.f.close()
-
-
 
