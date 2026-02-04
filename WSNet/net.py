@@ -4,7 +4,7 @@ from utils import *
 import os
 from loss import *
 from model.WSNet.WSNet import *
-from skimage.feature.tests.test_orb import img
+# from skimage.feature.tests.test_orb import img
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
@@ -26,5 +26,6 @@ class Net(nn.Module):
     def loss(self, pred, gt_mask):
         loss = self.cal_loss(pred, gt_mask)
         return loss
+
 
 
