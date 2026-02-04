@@ -1,0 +1,9 @@
+numpy==1.26.4
+torch==2.8.0+cu128
+torchvision==0.23.0+cu128
+matplotlib==3.10.8
+tqdm==4.66.2
+scikit-image==0.26.0
+pillow==12.1.0
+scipy==1.11.4
+thop
